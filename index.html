@@ -41,16 +41,6 @@ body {
     max-width: 70%;
 }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #00bfa5;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-
   li {
     margin: 5px 0;
     padding: 8px 12px;
@@ -61,36 +51,57 @@ button {
     display: block;
   }
 
-  @media (max-width: 600px) {
-    .container {
-      padding: 10px;
-      border-radius: 0;
-    }
-    
-    li {
-      max-width: 80%;
-    }
-    
-    #input {
-      border-radius: 0;
-    }
-  }
-
-
 </style>
+
+  <!-- Other head content -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
   
 </head>
 <body>
 
-  <div class="chat-container">
-    <div class="chat-header">Basic Chat App working!</div>
+  <div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container chat-container">
+    <div class="chat-header">Basic Chat App</div>
   <ul id="messages" class="chat-messages"></ul>
-  <form id="form" action="">
-    <input id="input" autocomplete="off" /><button>Send</button>
+  <form id="form" action="" class="mb-4">
+    <div class="input-group">
+    <input id="input" autocomplete="off" class="form-control"/>
+    <div class="input-group-append">
+    <button class="btn btn-primary animate__animated animate__flash animate__infinite animate__slower	3s">Send</button>
+   </div>
+  </div>
   </form>
 
+  <div class="info-container">
+    <h4>About the App</h4>
+    <p>This is a basic chat application built using Socket.io and Bootstrap. <br>
+      Use the following codes to insert emojis: <br>
+        1."smile": "😄"<br>
+        2. "happy": "😃"<br>
+        3. "react": "⚛️"<br>
+        4. "woah": "😲"<br>
+        5. "hey": "👋"<br>
+        6. "lol": "😂"<br>
+        7. "like": "❤️"<br>
+        8. "congratulations": "🎉"<br>
+        <br>
+        Use the following commands for additional options: <br>
+        1. /help <br>
+        2. /about <br>
+        <br>
+        Use the following command to clear the chat box : <br>
+        1. <b>/clear</b>
+        
+    </p>
+  </div>
+  </div>
  </div>
+</div>
   <script src="/socket.io/socket.io.js"></script>
   <script>
     const socket = io();
@@ -112,6 +123,14 @@ button {
       li.textContent = msg;
       messages.appendChild(li);
     });
+
+    // Client-side code
+    socket.on('clear chat', () => {
+    // Clear the chat display
+    const chatMessages = document.getElementById('messages');
+    chatMessages.innerHTML = '';
+    });
+
   </script>
 </body>
 </html>
