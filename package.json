@@ -4,6 +4,7 @@
   "description": "simple chat app using chat gpt 2nd try",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/anandsondhiya/simple-chat-app-2#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2"
   }
 }
